@@ -1,13 +1,15 @@
+import React, { useState } from "react";
 import { StyledAppBar } from "./Navbar.styled";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 import { selectCartProducts } from "../../feature/cart/cart";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Modal from "../Modal/Modal";
 
 const Navbar = () => {
-  const dispatch = useAppDispatch();
   const cartProducts = useAppSelector(selectCartProducts);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <StyledAppBar>
@@ -24,7 +26,10 @@ const Navbar = () => {
             Ecommerce
           </Typography>
         </Toolbar>
-        <Typography>{cartProducts.length}</Typography>
+        <Typography onClick={() => setIsModalOpen(!isModalOpen)}>
+          {cartProducts.length}
+        </Typography>
+        <Modal isOpen={isModalOpen} setClose={() => setIsModalOpen(false)} />
       </Container>
     </StyledAppBar>
   );

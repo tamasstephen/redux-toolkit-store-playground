@@ -20,7 +20,7 @@ const Product = ({ product }: { product: Product }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <ProductCard elevation={2}>
+    <ProductCard elevation={2} data-testid="product-card">
       <CardMedia
         sx={{ height: 175 }}
         image={product.image}

@@ -6,6 +6,7 @@ import {
   getAsyncProducts,
 } from "../feature/products/products";
 import ProductList from "../components/ProductList/ProductList";
+import { StyledContentWrapper } from "./Index.styled";
 
 const Index = () => {
   const dispatch = useAppDispatch();
@@ -19,9 +20,9 @@ const Index = () => {
   }, [getProductsState, dispatch]);
 
   return (
-    <div>
+    <StyledContentWrapper>
       <ProductList products={products} />
-    </div>
+    </StyledContentWrapper>
   );
 };
 
