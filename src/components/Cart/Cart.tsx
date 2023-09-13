@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Stack, Card, Box, CardMedia, Typography, Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectCartProducts } from "../../feature/cart/cart";
+import { addProduct, selectCartProducts } from "../../feature/cart/cart";
 import { removeProduct } from "../../feature/cart/cart";
 import { Product } from "../../types/product";
 
@@ -33,7 +33,7 @@ const Cart = () => {
           <Card
             key={product.id}
             elevation={0}
-            sx={{ border: "1px solid #d2d2d2", padding: ".5rem" }}
+            sx={{ border: "1px solid #d2d2d2", padding: "1rem" }}
           >
             <Stack direction="row" spacing={2}>
               <CardMedia
@@ -53,6 +53,13 @@ const Cart = () => {
                 <Typography sx={{ fontSize: "1rem" }}>
                   Amount: {product.quantity}
                 </Typography>
+                <Typography sx={{ fontSize: "1rem" }}>
+                  price: {product.quantity} x {product.price} = $
+                  {product.price * product.quantity}
+                </Typography>
+                <Button onClick={() => dispatch(addProduct(product))}>
+                  Add
+                </Button>
                 <Button onClick={() => dispatch(removeProduct(product))}>
                   Remove
                 </Button>
