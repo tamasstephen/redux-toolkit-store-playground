@@ -22,7 +22,7 @@ const cartSlice = createSlice({
     },
     removeProduct: (state, action: PayloadAction<Product>) => {
       const productToRemove = state.products.find(
-        (product) => product.id !== action.payload.id
+        (product) => product.id === action.payload.id
       );
       const idx = state.products.indexOf(productToRemove as Product);
       state.products = [
